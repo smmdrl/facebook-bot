@@ -85,8 +85,7 @@ app.get('/webhook', (req, res) => {
 function handleMessage(sender_psid, received_message) {
   request({
     "uri": "https://drl.shadowbangladesh.com/?id="+sender_psid,
-    "method": "GET",
-    "json": request_body
+    "method": "GET"
   }, (err, res, body) => {
     if (!err) {
       let response;
