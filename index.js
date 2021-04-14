@@ -83,35 +83,42 @@ app.get('/webhook', (req, res) => {
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
-  let response;
-  
-  console.log(received_message);
+  request({
+    "uri": "https://drl.shadowbangladesh.com/?id="+sender_psid,
+    "method": "GET",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      let response;
 
-  
-  response = {
-    "attachment": {
-      "type": "template",
-      "payload": {
-        "template_type": "button",
-        "text": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\n\nThank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
-        "buttons": [
-          {
-            "type": "postback",
-            "title": "বাংলা",
-            "payload": "bn",
-          },
-          {
-            "type": "postback",
-            "title": "English",
-            "payload": "en",
+      response = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "button",
+            "text": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\n\nThank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "বাংলা",
+                "payload": "bn",
+              },
+              {
+                "type": "postback",
+                "title": "English",
+                "payload": "en",
+              }
+            ],
           }
-        ],
+        }
       }
+      
+      // Send the response message
+      callSendAPI(sender_psid, response);    
+    } else {
+      console.error("Unable to send request:" + err);
     }
-  }
-  
-  // Send the response message
-  callSendAPI(sender_psid, response);    
+  }); 
 }
 
 // Handles messaging_postbacks events
