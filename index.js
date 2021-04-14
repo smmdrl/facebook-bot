@@ -5,9 +5,9 @@ const
   express = require('express'),
   bodyParser = require('body-parser'),
   request = require('request'),
+  PAGE_ACCESS_TOKEN = "EAANMjZAB2O5cBAJCisI3PPmGLnnXNp7TKIDgX07tVQERFmqCcMDC6PVqV6Mxqf3bW9MfTuywoZAMYhELnoYjZBoIcJIdQpSTrTHN2aTZAUBH0H7DbfBLtCjXYfD6CLSLMPUSvK9WkJdgWVmmFqFuWkvIKYysZCMArQ529kecJhZAENwATJja85rTg4U0hbZCFMZD", // Your page access token. Should get from your facebook developer account.
+  VERIFY_TOKEN = "DigitalRideTestToken", // Your verify token. Should be a random string.
   app = express().use(bodyParser.json()); // creates express http server
-  PAGE_ACCESS_TOKEN = "EAANMjZAB2O5cBAJCisI3PPmGLnnXNp7TKIDgX07tVQERFmqCcMDC6PVqV6Mxqf3bW9MfTuywoZAMYhELnoYjZBoIcJIdQpSTrTHN2aTZAUBH0H7DbfBLtCjXYfD6CLSLMPUSvK9WkJdgWVmmFqFuWkvIKYysZCMArQ529kecJhZAENwATJja85rTg4U0hbZCFMZD"; // Your page access token. Should get from your facebook developer account.
-  VERIFY_TOKEN = "DigitalRideTestToken"; // Your verify token. Should be a random string.
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
