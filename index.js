@@ -6,6 +6,8 @@ const
   bodyParser = require('body-parser'),
   request = require('request'),
   app = express().use(bodyParser.json()); // creates express http server
+  PAGE_ACCESS_TOKEN = "EAANMjZAB2O5cBAJCisI3PPmGLnnXNp7TKIDgX07tVQERFmqCcMDC6PVqV6Mxqf3bW9MfTuywoZAMYhELnoYjZBoIcJIdQpSTrTHN2aTZAUBH0H7DbfBLtCjXYfD6CLSLMPUSvK9WkJdgWVmmFqFuWkvIKYysZCMArQ529kecJhZAENwATJja85rTg4U0hbZCFMZD"; // Your page access token. Should get from your facebook developer account.
+  VERIFY_TOKEN = "DigitalRideTestToken"; // Your verify token. Should be a random string.
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
@@ -56,11 +58,6 @@ app.post('/webhook', (req, res) => {
 
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
-
-  // Your page access token and verify token. Should be a random string.
-  const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-  const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
-
     
   // Parse the query params
   let mode = req.query['hub.mode'];
@@ -120,12 +117,11 @@ function callSendAPI(sender_psid, response) {
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAANMjZAB2O5cBAJCisI3PPmGLnnXNp7TKIDgX07tVQERFmqCcMDC6PVqV6Mxqf3bW9MfTuywoZAMYhELnoYjZBoIcJIdQpSTrTHN2aTZAUBH0H7DbfBLtCjXYfD6CLSLMPUSvK9WkJdgWVmmFqFuWkvIKYysZCMArQ529kecJhZAENwATJja85rTg4U0hbZCFMZD" },
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent!');
       console.log(body);
     } else {
       console.error("Unable to send message:" + err);
