@@ -86,9 +86,7 @@ function handleMessage(sender_psid, received_message) {
   let response;
   
   response = {
-    "text": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\
-    \
-    Thank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
+    "text": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\n\nThank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
   }
   
   // Send the response message
