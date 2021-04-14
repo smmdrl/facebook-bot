@@ -89,6 +89,8 @@ function handleMessage(sender_psid, received_message) {
     if (!err) {
       let response;
 
+      console.log(body);
+
       response = {
         "attachment": {
           "type": "template",
