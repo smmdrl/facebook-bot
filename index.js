@@ -85,13 +85,8 @@ app.get('/webhook', (req, res) => {
 function handleMessage(sender_psid, received_message) {
   let response;
   
-  response = {
-    
-  }
-  
-  // Send the response message
-  callSendAPI(sender_psid, response);    
-    
+  console.log(received_message);
+
   
   response = {
     "attachment": {
