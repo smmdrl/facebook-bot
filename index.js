@@ -118,12 +118,12 @@ function handleMessage(sender_psid, received_message) {
               {
                 "type": "postback",
                 "title": "No!",
-                "payload": "no",
+                "payload": "nao",
               },
               {
                 "type": "postback",
                 "title": "No!",
-                "payload": "no",
+                "payload": "nbo",
               }
             ],
           }]
