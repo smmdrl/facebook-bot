@@ -86,14 +86,14 @@ function handleMessage(sender_psid, received_message) {
   let response;
   
   response = {
+    "text": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\
+    \
+    Thank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
     "attachment": {
       "type": "template",
       "payload": {
         "template_type": "generic",
         "elements": [{
-          "title": "ডিজিটাল রাইডে যোগাযোগের জন্য আপনাকে ধন্যবাদ। আরও কথোপকথনের জন্য দয়া করে আপনার পছন্দসই ভাষাটি নির্বাচন করুন।\
-          \
-          Thank you for messaging at Digital Ride. Please select your desired language for futher conversation.",
           "buttons": [
             {
               "type": "postback",
@@ -123,9 +123,15 @@ function handlePostback(sender_psid, received_postback) {
   let payload = received_postback.payload;
 
   // Set the response based on the postback payload
-  if (payload === 'yes') {
-    response = { "text": "Thanks!" }
-  } else if (payload === 'no') {
+  if (payload === 'bn') {
+    response = { "text": "ধন্যবাদ। এখন থেকে আপনার সাথে বাংলা ভাষায় যোগাযোগ করা হবে।\
+    \
+    রাইড রিকোয়েস্ট দেয়ার জন্য 1 চাপুন\
+    ডিজিটাল রাইড সম্পর্কিত তথ্যের জন্য 2 চাপুন\
+    কাস্টমার কেয়ার প্রতিনিধি'র সাথে কথা বলতে 3 চাপুন\
+    \
+    ভাষা পরিবর্তনের জন্য 0 চাপুন" }
+  } else if (payload === 'en') {
     response = { "text": "Oops, try sending another image." }
   }
   // Send the message to acknowledge the postback
